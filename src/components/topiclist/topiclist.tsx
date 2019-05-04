@@ -8,18 +8,6 @@ import { ITopiclistProps } from '../../interfaces/components/topicelist';
 // @inject('menuStore')
 @observer
 class Topiclist extends Component<ITopiclistProps, {}> {
-
-  // public static defaultProps: ITopiclistProps = {
-  //   getTopicList: () => { },
-  //   page: 1,
-  //   tab: 'all',
-  //   currentCata: {
-  //     key: 'all',
-  //     value: '全部'
-  //   },
-  //   list: [],
-  // }
-
   state = {
     scrollViewHeight: ''
   }

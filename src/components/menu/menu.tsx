@@ -17,6 +17,7 @@ class Menu extends Component<IMenuProps, {}> {
   }
 
   showMenu() {
+    console.log(this.props);
     const { menuStore } = this.props
     menuStore.showMenu()
   }
@@ -33,10 +34,10 @@ class Menu extends Component<IMenuProps, {}> {
     return (
       <View className={styles.menu}>
 
-        <AtDrawer style='position: absolute;' show={showDrawer} onClose={this.hideMenu} items={items}
-          onItemClick={this.clickCata}></AtDrawer>
+        <AtDrawer style='position: absolute;' show={showDrawer} onClose={this.hideMenu.bind(this)} items={items}
+          onItemClick={this.clickCata.bind(this)}></AtDrawer>
 
-        <Image onClick={this.showMenu} src={require('../../assets/img/menu.png')} className={styles.menuImg}></Image>
+        <Image onClick={this.showMenu.bind(this)} src={require('../../assets/img/menu.png')} className={styles.menuImg}></Image>
         <Text>{currentCata.value}</Text>
         <View className={styles.menuImg}></View>
       </View>

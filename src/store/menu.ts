@@ -35,6 +35,7 @@ const menuStore = observable({
   showDrawer: false,
   showMenu() {
     this.showDrawer = true
+    console.log(this.showDrawer)
   },
   
   hideMenu() {
