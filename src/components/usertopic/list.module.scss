@@ -1,0 +1,32 @@
+.warp {
+  width: 95%;
+  margin: 0 auto;
+  .title {
+    background: rgb(221, 221, 221);
+    height: 60px;
+    font-size: 30px;
+    line-height: 60px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+    .text {
+      margin-left: 20px;
+    }
+  }
+
+  .content {
+    border: 1PX solid #bebebe;
+    border-top: none;
+    font-size: 30px;
+    line-height: 100px;
+
+    .text {
+      width: calc(100% - 60px);
+      margin-left: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: rgb(0, 118, 173);
+      white-space: nowrap;
+    }
+  }
+}
