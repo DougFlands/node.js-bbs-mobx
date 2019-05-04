@@ -9,12 +9,16 @@ export interface ICurrentCata {
   value: string
 }
 
-
-export interface IMenuProps {
+export type menuStore = {
   cataData: Array<ICataData>
   currentCata: ICurrentCata
   changeCata: Function
   showDrawer: boolean
   hideMenu: any
   showMenu: any
+}
+
+
+export interface IMenuProps {
+  menuStore: menuStore
 }

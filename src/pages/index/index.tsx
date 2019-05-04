@@ -3,25 +3,10 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import Menu from '../../components/menu/menu';
 import Topiclist from '../../components/topiclist/topiclist';
-import { observer, inject } from '@tarojs/mobx'
+// import { observer, inject } from '@tarojs/mobx'
 
-import './index.scss'
-
-type PageStateProps = {
-  counterStore: {
-    counter: number,
-    increment: Function,
-    decrement: Function,
-    incrementAsync: Function
-  }
-}
-
-interface Index {
-  props: PageStateProps;
-}
-
-@inject('counterStore')
-@observer
+// @inject('counterStore')
+// @observer
 class Index extends Component {
 
   config: Config = {

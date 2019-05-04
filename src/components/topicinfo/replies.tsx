@@ -7,13 +7,11 @@ import {IRepliesProps} from '../../interfaces/components/topicinfo'
 const isweapp = process.env.TARO_ENV === 'weapp'
 
 class Replies extends Component<IRepliesProps> {
-
   public static defaultProps: IRepliesProps = {
     userRoute: false,
     replies: []
   }
-
-
+  
   goToUserInfo(loginname) {
     if (this.props.userRoute) {
       Taro.navigateTo({

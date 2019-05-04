@@ -1,42 +1,32 @@
 import Taro, { Component } from '@tarojs/taro'
-import { ScrollView } from '@tarojs/components'
-import { connect } from '@tarojs/redux';
-import { getTopicList } from '../../actions/topiclist';
+import { ScrollView, View } from '@tarojs/components'
+import { observer, inject } from '@tarojs/mobx'
 import Topice from './topice';
 import { ITopiclistProps } from '../../interfaces/components/topicelist';
 
-@connect(
-  store => {
-    return { ...store.topiclist, currentCata: store.menu.currentCata }
-  },
-  dispatch => {
-    return {
-      getTopicList(params) {
-        dispatch(getTopicList(params))
-      },
-    }
-  }
-)
-
+@inject('topiclistStore', 'menuStore')
+// @inject('menuStore')
+@observer
 class Topiclist extends Component<ITopiclistProps, {}> {
-  public static defaultProps: ITopiclistProps = {
-    getTopicList: () => { },
-    page: 1,
-    tab: 'all',
-    currentCata: {
-      key: 'all',
-      value: '全部'
-    },
-    list: [],
-  }
+
+  // public static defaultProps: ITopiclistProps = {
+  //   getTopicList: () => { },
+  //   page: 1,
+  //   tab: 'all',
+  //   currentCata: {
+  //     key: 'all',
+  //     value: '全部'
+  //   },
+  //   list: [],
+  // }
 
   state = {
     scrollViewHeight: ''
   }
 
   componentWillMount() {
-    let { page, currentCata } = this.props
-    this.props.getTopicList({ page, tab: currentCata.key })
+    let { topiclistStore, menuStore } = this.props
+    topiclistStore.getTopicList({ page: topiclistStore.page, tab: menuStore.currentCata.key })
 
     Taro.getSystemInfo().then(data => {
       this.setState({
@@ -46,16 +36,17 @@ class Topiclist extends Component<ITopiclistProps, {}> {
   }
 
   onScrollToLower() {
-    let { page, currentCata } = this.props
-    this.props.getTopicList({ page: page + 1, tab: currentCata.key })
+    let { topiclistStore, menuStore } = this.props
+    topiclistStore.getTopicList({ page: topiclistStore.page + 1, tab: menuStore.currentCata.key })
     console.log('翻页');
   }
 
   render() {
+    const { topiclistStore: { list } } = this.props
     return (
-      <ScrollView style={{ height: this.state.scrollViewHeight }} scrollY={true} onScrollToLower={this.onScrollToLower.bind(this)}>
+      <ScrollView style={{ height: this.state.scrollViewHeight }} scrollY={true} onScrollToLower={this.onScrollToLower}>
         {
-          this.props.list.map((item, index) => <Topice item={item} key={index}></Topice>)
+          list.slice().map((item, index) => <Topice item={item} key={index}></Topice>)
         }
       </ScrollView>
     )

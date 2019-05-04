@@ -1,5 +1,5 @@
 import { IAuthor } from './topicinfo'
-import {ICurrentCata} from './menu'
+import {ICurrentCata, menuStore} from './menu'
 
 interface ITopice {
   author: IAuthor
@@ -15,11 +15,16 @@ export interface ITopiceProps {
   item: ITopice
 }
 
-export interface ITopiclistProps {
+type topiclistStore = {
   getTopicList: Function
   page: number
   tab: string
   currentCata: ICurrentCata
   list: Array<ITopice>
+}
+
+export interface ITopiclistProps {
+  topiclistStore: topiclistStore
+  menuStore: menuStore
 }
 

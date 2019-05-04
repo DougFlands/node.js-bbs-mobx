@@ -4,12 +4,14 @@ interface IUser {
 
 }
 
-
-
-export interface IDetailProps {
+type topiclistStore = {
   getTopicInfo: any
   topicinfo: ITopicinfo
   replies: any
+}
+
+export interface IDetailProps {
+  topiclistStore: topiclistStore
 }
 
 export interface IDetailState {

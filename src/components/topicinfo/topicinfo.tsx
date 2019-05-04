@@ -5,7 +5,6 @@ import timeToLocal from '../../utils/date';
 import { ITopicinfoProps } from '../../interfaces/components/topicinfo';
 
 class Topicinfo extends Component<ITopicinfoProps> {
-
   public static defaultProps: ITopicinfoProps = {
     topicinfo: {
       top: false,
@@ -20,7 +19,7 @@ class Topicinfo extends Component<ITopicinfoProps> {
       content: '',
     }
   }
-
+  
   render() {
     let { topicinfo } = this.props
 
@@ -35,7 +34,7 @@ class Topicinfo extends Component<ITopicinfoProps> {
             <View className={styles.title}>{topicinfo.title}</View>
           </View>
           <View className={styles.headerPie}>
-            <Text>{timeToLocal(topicinfo.create_at)}</Text>
+            <Text>{topicinfo.create_at ? timeToLocal(topicinfo.create_at) : ''}</Text>
             <Text>{topicinfo.author.loginname}</Text>
             <Text>{topicinfo.visit_count} 次浏览</Text>
           </View>
