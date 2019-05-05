@@ -1,8 +1,9 @@
-import { observable } from 'mobx'
+import { observable, action } from 'mobx'
 import topiclistStore from './topiclist'
+import {ICataData, ICurrentCata} from '../interfaces/components/menu';
 
-const menuStore = observable({
-  cataData: [
+class menu {
+  @observable cataData: Array<ICataData> = [
     {
       key: 'all',
       value: '全部',
@@ -27,24 +28,29 @@ const menuStore = observable({
       key: 'dev',
       value: '客户端测试',
     },
-  ],
-  currentCata: {
+  ]
+  @observable currentCata: ICurrentCata = {
     key: 'all',
     value: '全部'
-  },
-  showDrawer: false,
-  showMenu() {
+  }
+  @observable showDrawer: boolean = false
+
+  @action showMenu() {
     this.showDrawer = true
     console.log(this.showDrawer)
-  },
-  
-  hideMenu() {
+  }
+
+  @action hideMenu() {
     this.showDrawer = false
-  },
-  
-  changeCata(cata) {
+  }
+
+  @action changeCata(cata) {
     this.currentCata = cata
     topiclistStore.getTopicList({ page: 1, tab: this.currentCata.key }, true)
-  },
-})
+  }
+
+}
+
+let menuStore = new menu()
+
 export default menuStore

@@ -30,6 +30,7 @@ class Menu extends Component<IMenuProps, {}> {
 
   render() {
     const { menuStore: { cataData, currentCata, showDrawer } } = this.props
+    
     const items = cataData.slice().map(item => item.value)
     return (
       <View className={styles.menu}>

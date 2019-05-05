@@ -5,7 +5,6 @@ import Topice from './topice';
 import { ITopiclistProps } from '../../interfaces/components/topicelist';
 
 @inject('topiclistStore', 'menuStore')
-// @inject('menuStore')
 @observer
 class Topiclist extends Component<ITopiclistProps, {}> {
   state = {
